@@ -32,7 +32,7 @@ namespace Musikal
             }
 
             string ScaleRoot = "F";                                 //<<    Set scale root.
-            int[] ScaleDefiition = Major;                           //<<    Set scale definition to use i.e 
+            int[] ScaleDefiition = Major;                           //<<    Set scale definition to use, e.g, Major or Minor. 
             int NoteIndex = ChromaticNotes.IndexOf(ScaleRoot);      //<<    Set scale root index.
             //Console.WriteLine(NoteIndex);
 
