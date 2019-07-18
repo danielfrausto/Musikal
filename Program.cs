@@ -34,10 +34,10 @@ namespace Musikal
             string ScaleRoot = "F";                                 //<<    Set scale root.
             int[] ScaleDefiition = Major;                           //<<    Set scale definition to use i.e 
             int NoteIndex = ChromaticNotes.IndexOf(ScaleRoot);      //<<    Set scale root index.
-                                                                    //Console.WriteLine(NoteIndex);
-          
-            //  0  1  2  3  4  5  6  7  8  9  10  11 12
-            //  C  C# D  D# E  F  F# G  G# A  A#  B  C
+            //Console.WriteLine(NoteIndex);
+
+            //  0  1  2  3  4  5  6  7  8  9  10  11
+            //  C  C# D  D# E  F  F# G  G# A  A#  B 
             int nextIndex = NoteIndex;
             foreach(int step in ScaleDefiition)
             {
@@ -50,12 +50,7 @@ namespace Musikal
                 {
                     Console.WriteLine(ChromaticNotes[nextIndex - ChromaticNotes.Count()]);
                 }
-
-
             }
-
-
-
             Console.ReadKey();
         }
 
