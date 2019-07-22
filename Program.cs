@@ -17,7 +17,8 @@ namespace Musikal
 
         //  static Dictionary<string, dynamic> {{ScaleName}} = new Dictionary<string, dynamic>() { { "Name","{{ScaleName}}"},{ "Steps", new int[] { {{ScaleSteps}} } } };
 
-        static Dictionary<string, dynamic> Major = new Dictionary<string, dynamic>() { { "Name","Major"},{ "Definition", new int[] { 0, 2, 2, 1, 2, 2, 2, 1 } } };
+        static Dictionary<string, dynamic> Major = new Dictionary<string, dynamic>() { { "Name", "Major" }, { "Steps", new int[] { 0, 2, 2, 1, 2, 2, 2, 1 } } };
+
         static void Main(string[] args)
         {
             SetChromaticNotes();                                    //<<    Set chromatic notes. Required!!!
@@ -27,16 +28,33 @@ namespace Musikal
             //pScale(ScaleRoot, ScaleDefinition);
 
             //pAll();
-            dicTest(Major);
+            dicTest("C",Major);
             Console.ReadKey();                                      //<<    Keep app alive.
         }
-        static void dicTest(Dictionary<string, dynamic> ThisDict)
+        static void dicTest(string ScaleRoot, Dictionary<string, dynamic> ThisDict)
         {
-            Console.WriteLine(ThisDict["Name"]);
-            foreach(int Step in ThisDict["Definition"])
+            Console.WriteLine(ScaleRoot + " " + ThisDict["Name"] + " scale");
+            List<string> ScaleNotes = new List<string>();
+            int NoteIndex = ChromaticNotes.IndexOf(ScaleRoot);      //<<    Set scale root index.
+            //Console.WriteLine(NoteIndex);
+
+            int nextIndex = NoteIndex;
+            foreach (int step in ThisDict["Steps"])
             {
-                Console.WriteLine(Step);
+                nextIndex = nextIndex + step;
+                if (nextIndex <= ChromaticNotes.Count() - 1)
+                {
+                    //Console.WriteLine(ChromaticNotes[nextIndex]);
+                    ScaleNotes.Add(ChromaticNotes[nextIndex]);
+                }
+                else
+                {
+                    //Console.WriteLine(ChromaticNotes[nextIndex - ChromaticNotes.Count()]);
+                    ScaleNotes.Add(ChromaticNotes[nextIndex - ChromaticNotes.Count()]);
+                }
             }
+            Console.WriteLine(string.Join(" - ", ScaleNotes));
+
         }
         //static void pAll()
         //{
